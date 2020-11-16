@@ -7,8 +7,8 @@ raw_data <- read.csv("https://raw.githubusercontent.com/alex/nyt-2020-election-s
 # Basic data frame exploration
 num_cols <- ncol(data)
 num_rows <- nrow(data)
-num_states <- length(unique(data$state))
-num_timestamps <- length(unique(data$timestamp))
+num_states <- length(unique(raw_data$state))
+num_timestamps <- length(unique(raw_data$timestamp))
 
 # Formatting:
 # Splitting out state name from electoral votes
@@ -65,7 +65,8 @@ vote_diff_plot <- ggplot(vote_diff) +
   labs(x = "Vote Difference",
        y = "State",
        fill = "Candidate",
-       title = "Vote Difference at Most Recent Time Stamp")
+       title = "Vote Difference at Most Recent Time Stamp") +
+  scale_x_continuous(labels = scales::comma)
 
 vote_pct_plot <- ggplot(vote_diff) +
   geom_col(mapping = aes(x = pct_diff,
