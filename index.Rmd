@@ -6,13 +6,23 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(kableExtra)
 source("analysis.R")
 ```
 
 This data comes from [this repo](https://github.com/alex/nyt-2020-election-scraper) and shows the candidate leads over time. Interestingly, Biden took the lead in Georgia at `r ga_lead_time`.
 
+Here is the number of time stamps for each state in the data set:
+
+```{r, echo=FALSE}
+knitr::kable(timestamps_by_state,
+             col.names = c("State", "Number of Time Stamps"), "html") %>%
+  kable_styling(full_width = F)
+```
+
 Here is what the result looked like at the end of the vote tallies:
 
-```{r}
+```{r fig.width=8, fig.height=6, echo=FALSE}
 vote_diff_plot
+vote_pct_plot
 ```
