@@ -65,14 +65,20 @@ vote_diff_plot <- ggplot(vote_diff) +
   labs(x = "Vote Difference",
        y = "State",
        fill = "Candidate",
-       title = "Vote Difference at Most Recent Time Stamp") +
+       title = "Vote Difference",
+       subtitle = "(at Most Recent Time Stamp)") +
   scale_x_continuous(labels = scales::comma)
 
 vote_pct_plot <- ggplot(vote_diff) +
   geom_col(mapping = aes(x = pct_diff,
                          y = reorder(state, pct_diff),
                          fill = leading_candidate_name)) +
-  scale_fill_manual(values = c("blue", "red"))
+  scale_fill_manual(values = c("blue", "red")) +
+  labs(x = "Vote Percent Difference",
+       y = "State",
+       fill = "Candidate",
+       title = "Vote Percent Difference",
+       subtitle = "(at Most Recent Time Stamp)")
 
 # How do total votes change over time (by candidate)?
 
