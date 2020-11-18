@@ -5,8 +5,8 @@ library(tidyverse)
 raw_data <- read.csv("https://raw.githubusercontent.com/alex/nyt-2020-election-scraper/master/all-state-changes.csv")
 
 # Basic data frame exploration
-num_cols <- ncol(data)
-num_rows <- nrow(data)
+num_cols <- ncol(raw_data)
+num_rows <- nrow(raw_data)
 num_states <- length(unique(raw_data$state))
 num_timestamps <- length(unique(raw_data$timestamp))
 
